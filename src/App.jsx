@@ -1,10 +1,12 @@
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Erorrpage from './pages/Erorrpage'
 function App() {
-
   return (
-    <>
-      <h1>hey this Is the mood genertor website</h1>
-    </>
+    <Router>
+    <Routes>
+      <Route path="/" element={<Erorrpage/>} />
+    </Routes>
+  </Router>
   )
 }
 
