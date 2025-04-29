@@ -17,6 +17,5 @@ SORRY SOME INTERNAL ERROR         </h1>
       </div>
     </>
   );
-}
-
+} 
 export default Erorrpage;
