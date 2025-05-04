@@ -120,10 +120,9 @@ const getMoviesLists = (mood) => {
 
   return Movies[mood] || [];
 };
-
 function Wrapper() {
   const [name, setName] = useState("");
-    const [selectedMood, setSelectedMood] = useState(null);
+  const [selectedMood, setSelectedMood] = useState(null);
   const [nameSubmitted, setNameSubmitted] = useState(false);
 
   return (
@@ -134,13 +133,12 @@ function Wrapper() {
         <img
           src="/maini.png"
           alt="Main"
-          className="w-120 h-120 drop-shadow-xl"
+          className="w-60 md:w-80 lg:w-96 drop-shadow-xl"
         />
 
-        <div className="flex flex-col md:flex-row gap-10 w-full max-w-4xl justify-between items-center">
-          {/* Input Card */}
-          {/* Left Card */}
-          <div className="backdrop-blur-lg bg-white/60 p-6 rounded-2xl fixed top-34 left-20 shadow-lg w-40 md:w-100 ">
+        <div className="flex flex-col lg:flex-row gap-10 w-full max-w-6xl justify-between items-center relative">
+          {/* Input / Music Panel */}
+          <div className="backdrop-blur-lg bg-white/60 p-6 rounded-2xl shadow-lg w-full lg:w-1/2">
             {!selectedMood ? (
               <>
                 <h2 className="text-lg font-semibold text-gray-700 mb-3">
@@ -152,76 +150,70 @@ function Wrapper() {
                   placeholder="Type your name here..."
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-80 px-4 py-2 rounded-md bg-white text-blue-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  className="w-full px-4 py-2 rounded-md bg-white text-blue-500 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300"
                 />
                 <button
                   onClick={() => name && setNameSubmitted(true)}
                   className="mt-4 bg-orange-400 text-white px-4 py-1 rounded-md hover:bg-orange-500 transition"
                 >
-                  submit
+                  Submit
                 </button>
               </>
             ) : (
-              <>
-                <div className="w-100 h-100 ">
-                  <h2 className="text-lg font-semibold text-gray-700 mb-3">
-                    🎵 {selectedMood} Vibes for {name}
-                  </h2>
-                  <ul className="list-disc list-inside text-sm text-gray-800">
-                    {getMusicList(selectedMood).map((song, index) => (
-                      <iframe
-                        width="350"
-                        className="py-2"
-                        height="115"
-                        src={song}
-                        key={index}
-                        title="YouTube video player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen
-                      ></iframe>
-                    ))}
-                  </ul>
+              <div>
+                <h2 className="text-lg font-semibold text-gray-700 mb-3">
+                  🎵 {selectedMood} Vibes for {name}
+                </h2>
+                <div className="space-y-3">
+                  {getMusicList(selectedMood).map((song, index) => (
+                    <iframe
+                      key={index}
+                      className="w-full h-[115px]"
+                      src={song}
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                    ></iframe>
+                  ))}
                 </div>
-              </>
+              </div>
             )}
           </div>
 
-       
-          {/* Recommendations Card */}
-          <div className="flex-1 bg-white/60 backdrop-blur-lg p-6 rounded-2xl shadow-lg overflow-hidden fixed top-50 right-20">
-           <h3 className="text-lg font-semibold text-gray-700 mb-3">Movies for your vibe </h3>
+          {/* Movies Panel */}
+          <div className="bg-white/60 backdrop-blur-lg p-6 rounded-2xl shadow-lg w-full lg:w-1/2 max-h-[500px] overflow-y-auto">
+            <h3 className="text-lg font-semibold text-gray-700 mb-3">
+              Movies for your vibe
+            </h3>
             {!selectedMood ? (
               <p className="text-gray-800 text-sm">
                 {nameSubmitted ? (
                   <>
-                    <span className="font-semibold text-orange-500">{name}</span>,
-                    discover songs 🎵 and movies 🎬 that match your mood!
+                    <span className="font-semibold text-orange-500">{name}</span>
+                    , discover songs 🎵 and movies 🎬 that match your mood!
                   </>
                 ) : (
                   "Enter your name to get started with personalized recommendations!"
                 )}
               </p>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 h-full overflow-y-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {getMoviesLists(selectedMood).map((movie, i) => (
                   <div
                     key={i}
                     className="group bg-white rounded-2xl shadow-lg transform hover:-translate-y-1 hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col"
                   >
-                    <div className="overflow-hidden">
-                      <img
-                        src={movie.poster}
-                        alt={movie.title}
-                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                     <div className="p-4 flex-1 flex flex-col">
                       <h3 className="text-lg font-semibold text-gray-800 mb-2 group-hover:text-orange-500 transition-colors duration-200">
                         {movie.title}
                       </h3>
-                      <p className="text-sm text-gray-600 leading-snug line-clamp-3 flex-1">
+                      <p className="text-sm text-gray-600 line-clamp-3 flex-1">
                         {movie.description}
                       </p>
                     </div>
@@ -235,8 +227,8 @@ function Wrapper() {
 
       {/* Mood Bar */}
       <div className="mt-auto py-6">
-        <div className="mx-auto w-fit px-8 py-3 rounded-full shadow-lg backdrop-blur-md bg-white/70 border border-[#d3cbb8]">
-          <ul className="flex gap-6">
+        <div className="mx-auto w-fit px-4 sm:px-8 py-3 rounded-full shadow-lg backdrop-blur-md bg-white/70 border border-[#d3cbb8]">
+          <ul className="flex gap-4 sm:gap-6 overflow-hidden">
             {moods.map((mood, idx) => (
               <li
                 key={idx}
@@ -244,7 +236,7 @@ function Wrapper() {
                   if (nameSubmitted) {
                     setSelectedMood(mood.name);
                   } else {
-                    alert("Please enter your name and click Start first.");
+                    alert("Please enter your name and click Submit first.");
                   }
                 }}
                 className={`flex px-2 flex-col items-center justify-center text-gray-700 hover:scale-110 transition-transform cursor-pointer ${
@@ -265,5 +257,4 @@ function Wrapper() {
     </div>
   );
 }
-
 export default Wrapper;
