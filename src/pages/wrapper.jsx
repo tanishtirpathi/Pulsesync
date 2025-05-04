@@ -44,75 +44,75 @@ const getMoviesLists = (mood) => {
   const Movies = {
     Chill: [
       {
-        title: "The Secret Life of Walter Mitty",
+        title: "Happiness ",
         poster:
-          "https://m.media-amazon.com/images/I/71n16cdO7eL._AC_SY679_.jpg",
+          "/Happiness.webp",
         description:
           "A daydreamer's adventure to find the extraordinary in life.",
       },
       {
-        title: "Chef",
+        title: "Yeh Jawaani Hai Deewani",
         poster:
-          "https://m.media-amazon.com/images/I/81Mxun+6pEL._AC_SY679_.jpg",
+         "/yejawani.webp",
         description:
           "A chef starts a food truck, discovering freedom and passion.",
       },
     ],
     Angry: [
       {
-        title: "Gladiator",
+        title: "Taxi Driver",
         poster:
-          "https://m.media-amazon.com/images/I/71KJ1HEmGPL._AC_SY679_.jpg",
+          "/taxi driver.webp",
         description: "A betrayed general seeks vengeance against an emperor.",
       },
       {
         title: "John Wick",
         poster:
-          "https://m.media-amazon.com/images/I/91f2gOF7FGL._AC_SY679_.jpg",
+          "/johnwick.webp",
         description: "An ex-hitman comes out of retirement for revenge.",
       },
     ],
     Sad: [
       {
-        title: "The Pursuit of Happyness",
+        title: "Twenty-Five Twenty-One ",
         poster:
-          "https://m.media-amazon.com/images/I/71s3RihVJFL._AC_SY679_.jpg",
+          "/two.webp",
         description: "A heartwarming story of struggle and hope.",
       },
       {
-        title: "A Silent Voice",
+        title: "Dil Bechara",
         poster:
-          "https://m.media-amazon.com/images/I/81W2pUqM+5L._AC_SY679_.jpg",
+          "/dil.webp",
         description: "A touching anime about redemption and communication.",
       },
     ],
     Happy: [
       {
-        title: "Paddington 2",
+        title: "Chhichhore ",
         poster:
-          "https://m.media-amazon.com/images/I/81v7kdgk9pL._AC_SY679_.jpg",
+          "/Chhichhore.webp",
         description: "A cheerful bear spreads joy and kindness.",
       },
       {
-        title: "Sing",
+        title: "duty after school",
         poster:
-          "https://m.media-amazon.com/images/I/81ok2zZf8KL._AC_SY679_.jpg",
+          "/duty ater school.webp",
         description:
           "Animals chase their dreams through a singing competition.",
       },
     ],
     Romantic: [
       {
-        title: "La La Land",
+        title: "shiddat",
         poster:
-          "https://m.media-amazon.com/images/I/81PZKUz+rpL._AC_SY679_.jpg",
+          "/shiddat.webp",
         description:
           "A love story between a jazz musician and an aspiring actress.",
       },
       {
-        title: "The Notebook",
+        title: "Jab We Met",
         poster:
-          "https://m.media-amazon.com/images/I/81uG9X2Bd-L._AC_SY679_.jpg",
+          "/jab.webp",
         description: "An epic tale of enduring love through time.",
       },
     ],
@@ -191,6 +191,7 @@ function Wrapper() {
        
           {/* Recommendations Card */}
           <div className="flex-1 bg-white/60 backdrop-blur-lg p-6 rounded-2xl shadow-lg overflow-hidden fixed top-50 right-20">
+           <h3 className="text-lg font-semibold text-gray-700 mb-3">Movies for your vibe </h3>
             {!selectedMood ? (
               <p className="text-gray-800 text-sm">
                 {nameSubmitted ? (
@@ -213,7 +214,7 @@ function Wrapper() {
                       <img
                         src={movie.poster}
                         alt={movie.title}
-                        className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
                     <div className="p-4 flex-1 flex flex-col">
