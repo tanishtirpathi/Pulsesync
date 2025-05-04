@@ -3,7 +3,7 @@ import React from "react";
 export default function Navbar() {
   return (
     <nav className="w-full flex items-center justify-center">
-      <div
+      <div  
         className="mx-auto fixed top-5 rounded-md w-[95%] sm:w-auto z-50"
         style={{
           background:
